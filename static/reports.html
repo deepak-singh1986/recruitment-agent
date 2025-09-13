@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Interview Reports | AI Recruitment Dashboard</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+<style>
+body {
+	font-family: 'Roboto', Arial, sans-serif;
+	background: #f4f6fa;
+	margin: 0;
+	padding: 0;
+}
+.header {
+	background: linear-gradient(90deg, #4f8cff 0%, #2355d6 100%);
+	color: #fff;
+	padding: 24px 0 16px 0;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+.header h1 {
+	margin: 0;
+	font-size: 2.2rem;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+.navbar {
+	display: flex;
+	justify-content: center;
+	gap: 32px;
+	background: #2355d6;
+	padding: 10px 0;
+}
+.navbar a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1.1rem;
+	padding: 6px 18px;
+	border-radius: 4px;
+	transition: background 0.2s;
+}
+.navbar a:hover, .navbar a.active {
+	background: #4f8cff;
+}
+.container {
+	max-width: 900px;
+	margin: 40px auto 0 auto;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+	padding: 32px 40px 40px 40px;
+}
+footer {
+	background: #2a3b4c;
+	color: #fff;
+	text-align: center;
+	padding: 18px 0 12px 0;
+	margin-top: 40px;
+	font-size: 1rem;
+	letter-spacing: 1px;
+}
+table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+	margin-bottom: 32px;
+}
+th, td {
+	padding: 12px 10px;
+	text-align: left;
+}
+th {
+	background: #f0f4fa;
+	color: #2a3b4c;
+	font-weight: 700;
+	border-bottom: 2px solid #e3e8f0;
+}
+tr:nth-child(even) td {
+	background: #f9fafb;
+}
+tr:hover td {
+	background: #eaf1fb;
+}
+.report-link {
+	color: #2355d6;
+	text-decoration: underline;
+	font-weight: 500;
+	cursor: pointer;
+}
+@media (max-width: 700px) {
+	.container { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+	<h1>AI Recruitment Dashboard</h1>
+</div>
+<div class="navbar">
+	<a href="/dashboard">Dashboard</a>
+	<a href="/reports" class="active">Reports</a>
+	<a href="#" onclick="showModal('Coming soon!')">Analytics</a>
+	<a href="#" onclick="showModal('Coming soon!')">Settings</a>
+</div>
+<div class="container">
+	<h2>Interview Reports</h2>
+	<table id="reports">
+		<thead>
+			<tr>
+				<th>Report File</th>
+				<th>Download</th>
+				<th>View</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Filled by JS -->
+		</tbody>
+	</table>
+	<div id="modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(44,62,80,0.18);z-index:1000;align-items:center;justify-content:center;">
+		<div style="background:#fff;padding:32px 24px 24px 24px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.12);max-width:350px;text-align:center;position:relative;">
+			<span id="modal-close" style="position:absolute;top:8px;right:16px;font-size:1.5rem;cursor:pointer;">&times;</span>
+			<div id="modal-msg" style="font-size:1.1rem;color:#2a3b4c;margin-top:12px;"></div>
+		</div>
+	</div>
+</div>
+<footer>
+	&copy; 2025 AI Recruitment Platform &mdash; Powered by GenAI
+</footer>
+<script>
+function showModal(msg) {
+	document.getElementById('modal-msg').innerText = msg;
+	document.getElementById('modal').style.display = 'flex';
+}
+document.getElementById('modal-close').onclick = function() {
+	document.getElementById('modal').style.display = 'none';
+};
+async function loadReports() {
+	const r = await fetch('/reports/api');
+	const data = await r.json();
+	const tb = document.querySelector('#reports tbody');
+	tb.innerHTML = '';
+	if (!data.reports || !data.reports.length) {
+		tb.innerHTML = '<tr><td colspan="3" style="text-align:center;color:#888;">No reports found.</td></tr>';
+		return;
+	}
+	data.reports.forEach(rep => {
+		tb.innerHTML += `<tr>
+			<td>${rep.file}</td>
+			<td><a class="report-link" href="${rep.url}" download>Download</a></td>
+			<td><a class="report-link" href="/reports/view/${rep.file}" target="_blank">View</a></td>
+		</tr>`;
+	});
+}
+loadReports();
+</script>
+</body></html>

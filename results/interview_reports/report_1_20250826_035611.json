@@ -1,0 +1,39 @@
+{
+  "candidate": {
+    "id": 1,
+    "name": null,
+    "phone": "+917709861994"
+  },
+  "job": "sample_jd.pdf",
+  "timestamp": "2025-08-25T22:26:11.870609",
+  "questions": [
+    "Can you describe your experience working with Python and how you've applied it in previous projects?",
+    "Have you worked with FastAPI or Flask before? If yes, can you share a specific example of a project where you used either framework?",
+    "What is your approach to designing and implementing REST APIs, and how do you ensure their scalability and security?",
+    "Your resume mentions experience with Django. How does your knowledge of Django complement your work with PostgreSQL databases?",
+    "Can you share a project where you utilized PostgreSQL extensively? What challenges did you face, and how did you overcome them?",
+    "With your skills in Python and SQL, how do you approach debugging and optimizing backend systems?",
+    "Problem-solving is listed as one of your strengths. Can you share an example of a complex problem you solved in your previous work?",
+    "You mentioned being a quick learner. Can you describe a situation where you had to learn a new technology or skill quickly to meet a project deadline?",
+    "Time management is listed as a weakness. How are you currently working to improve your time management skills, and how do you ensure deadlines are met?",
+    "Public speaking is another area you identified as a weakness. How do you handle situations where you need to present your ideas or collaborate with a team?"
+  ],
+  "answers": [
+    "Yeah, creating multiple projects using python?",
+    "Yeah, that's why I mentioned that I have created multiple projects using python.",
+    "So basically I have created an application wherein I have used as class.",
+    "APA APA.",
+    "January 11th. January.",
+    "I don't have any specific use case for that.",
+    "Debugging, I use basically charges.",
+    "Amazing back end.",
+    "No, no. I don't have any such use case.",
+    "can I help you to describe an",
+    "Nothing specific."
+  ],
+  "scores": [],
+  "overall": {
+    "decision": "REJECT",
+    "reason": "Average score = 0.0, threshold=6."
+  }
+}

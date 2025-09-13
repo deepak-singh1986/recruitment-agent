@@ -1,0 +1,39 @@
+{
+  "candidate": {
+    "id": 1,
+    "name": null,
+    "phone": "+917709861994"
+  },
+  "job": "sample_jd.pdf",
+  "timestamp": "2025-08-25T21:02:24.077143",
+  "questions": [
+    "Tell me about yourself.",
+    "What are your key strengths?",
+    "What is your biggest weakness?",
+    "Describe a challenging project you worked on.",
+    "Why are you interested in this role?",
+    "How do you handle tight deadlines?",
+    "Give an example of teamwork.",
+    "Where do you see yourself in 5 years?",
+    "How do you keep your skills updated?",
+    "Do you have any questions for us?"
+  ],
+  "answers": [
+    "My son became 12 years of experience, and I'm currently working Reliant General Insurance.",
+    "Walk down multiple projects.",
+    "My keys are basically Team Management as well. DB progress. Python Lambda Lambda.",
+    "I don't have any biggest reasons and I'm not sure if I can say to you.",
+    "I don't walk on.",
+    "Why I am interested in this role? You tell me.",
+    "I don't agree to that particular deadline.",
+    "No teamwork.",
+    "On this particular.",
+    "Watching TV movie game.",
+    "No, I don't have any question for you."
+  ],
+  "scores": [],
+  "overall": {
+    "decision": "REJECT",
+    "reason": "Average score = 0.0, threshold=6."
+  }
+}

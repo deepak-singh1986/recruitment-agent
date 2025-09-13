@@ -1,0 +1,24 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore environment files
+.env
+
+# Ignore node modules (for JS/React projects)
+node_modules/
+
+# Ignore build and log files
+/dist/
+/build/
+*.log
+
+ffmpeg-8.0-essentials_build.zip
+vosk-model-small-en-in-0.4.zip
+vosk-model-en-in-0.5.zip
+
+models/

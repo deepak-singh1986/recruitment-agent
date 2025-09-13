@@ -1,0 +1,38 @@
+{
+  "candidate": {
+    "id": 1,
+    "name": null,
+    "phone": "+917709861994"
+  },
+  "job": "sample_jd.pdf",
+  "timestamp": "2025-08-25T17:23:08.491651",
+  "questions": [
+    "Tell me about yourself.",
+    "What are your key strengths?",
+    "What is your biggest weakness?",
+    "Describe a challenging project you worked on.",
+    "Why are you interested in this role?",
+    "How do you handle tight deadlines?",
+    "Give an example of teamwork.",
+    "Where do you see yourself in 5 years?",
+    "How do you keep your skills updated?",
+    "Do you have any questions for us?"
+  ],
+  "answers": [
+    "What to tell about myself, I don't have anything to say about myself.",
+    "I don't have any keys to any particularly",
+    "I have lots of my weakness which I cannot say to you.",
+    "I haven't worked on any challenging project, I simply work on simple projects,",
+    "Nobody is ready to work on this road. So, I started to work on this road.",
+    "I don't handle any tight deadline. I simply reject. Those particular deadlines.",
+    "There is no team, I'm not working.",
+    "Is still low.",
+    "My reading books and sitting watching movies.",
+    "Telegram Facebook."
+  ],
+  "scores": [],
+  "overall": {
+    "decision": "REJECT",
+    "reason": "Average score = 0.0, threshold=6."
+  }
+}

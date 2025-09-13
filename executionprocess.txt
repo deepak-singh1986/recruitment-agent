@@ -1,0 +1,86 @@
+Start & Run Project
+
+Unzip and install dependencies
+
+unzip ai_recruitment_full_repo.zip -d ai_recruitment_full_repo
+cd ai_recruitment_full_repo
+
+python -m venv .aiagentenv
+(Windows: .aiagentenv\Scripts\activate)
+pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+
+
+Set environment variables
+
+cp .env.sample .env
+
+
+Open .env and fill values:
+
+PUBLIC_SERVER_URL=https://xxxx.ngrok-free.app
+TWILIO_ACCOUNT_SID=ACxxxx
+TWILIO_AUTH_TOKEN=xxxx
+TWILIO_PHONE=+1xxxx
+OLLAMA_URL=http://localhost:11434
+VOSK_MODEL_PATH=models/vosk-model-small-en-in-0.4
+DATABASE_URL=postgresql+psycopg2://user:pass@localhost:5432/ai_recruitment
+
+Download ffmpeg and set path in environment variables
+C:\ffmpeg\bin
+
+pip install gTTS
+pip install ollama
+ollama run nomic-embed-text
+ollama run llama3.1:8b
+
+Run FastAPI server
+
+uvicorn app:app --host 0.0.0.0 --port 8000
+
+🌐 Accessing the HTML Dashboard
+
+Once the server is running, open your browser:
+
+http://localhost:8000/dashboard
+
+
+👉 This loads static/dashboard.html served by app.py.
+
+On this page you can:
+
+Upload JD (PDF) into jd/
+
+Upload Resumes (PDFs) into candidates/
+
+Click Run Shortlisting → compares JD & resumes, marks select/reject
+
+Click Start Calls → Twilio dials shortlisted candidates
+
+Watch real-time status updates (SELECTED / IN_CALL / DONE)
+
+Click View Report → candidate-specific interview report (HTML/PDF)
+
+🧪 Optional: Local Test Without Twilio
+
+To simulate calls without Twilio:
+
+Convert a WAV to 8kHz mono PCM16:
+
+ffmpeg -i voice.wav -ar 8000 -ac 1 -acodec pcm_s16le sample_audio.wav
+
+
+Run the test harness:
+
+python simulate_twilio.py
+
+
+This fakes a Twilio call session → your logs will show STT transcription, LLaMA answers, and TTS output.
+
+✅ Summary:
+
+Start server: uvicorn app:app --host 0.0.0.0 --port 8000
+
+Open dashboard: http://localhost:8000/dashboard
+
+Upload JD & resumes, run shortlisting, start calls, track in real time.

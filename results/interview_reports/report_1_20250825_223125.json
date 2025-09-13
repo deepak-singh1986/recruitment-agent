@@ -1,0 +1,38 @@
+{
+  "candidate": {
+    "id": 1,
+    "name": null,
+    "phone": "+917709861994"
+  },
+  "job": "sample_jd.pdf",
+  "timestamp": "2025-08-25T17:01:25.241524",
+  "questions": [
+    "Tell me about yourself.",
+    "What are your key strengths?",
+    "What is your biggest weakness?",
+    "Describe a challenging project you worked on.",
+    "Why are you interested in this role?",
+    "How do you handle tight deadlines?",
+    "Give an example of teamwork.",
+    "Where do you see yourself in 5 years?",
+    "How do you keep your skills updated?",
+    "Do you have any questions for us?"
+  ],
+  "answers": [
+    "I don't have anything to say about myself.",
+    "My key strength is basically a strength which is not a strength.",
+    "My biggest weakness is about the weakness, which is not a weakness but a strength.",
+    "I worked on a very important project here recruitment dashboard, which was basically a voice call agent to conduct interview of a profile, which is shortlisted",
+    "That is because you don't have anyone else to work on this role. That's why I'm interested.",
+    "I don't handle any tight deadlines. I simply reject that deadline.",
+    "There is nothing as it is.",
+    "I want to see myself after 5 years in a very good bar lounge access where I will enjoy my take coffee and beer.",
+    "I keep on doing this different websites pages.",
+    "No, I don't have any question. If you have your continued, otherwise you can drop."
+  ],
+  "scores": [],
+  "overall": {
+    "decision": "REJECT",
+    "reason": "Average score = 0.0, threshold=6."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "candidate": {
+    "id": 1,
+    "name": null,
+    "phone": "+917709861994"
+  },
+  "job": "sample_jd.pdf",
+  "timestamp": "2025-08-26T12:09:41.517787",
+  "questions": [
+    "From the Job Description: Can you describe your experience working with Python and how you've applied it in backend development projects?",
+    "From the Job Description: Have you worked with FastAPI or Flask before? If yes, can you share a specific project where you used either framework?",
+    "From the Job Description: What is your approach to designing and optimizing PostgreSQL databases for backend systems?",
+    "From the Candidate's Profile: Your resume mentions experience with Django. How do you think Django compares to FastAPI or Flask for backend development?",
+    "From the Candidate's Profile: Can you share a project where you utilized REST APIs and explain the challenges you faced while implementing them?",
+    "From the Candidate's Profile: With your skills in SQL and PostgreSQL, how do you ensure database queries are efficient and scalable?",
+    "About Strengths: You mentioned problem-solving as one of your strengths. Can you share an example of a complex problem you solved in a previous project?",
+    "About Strengths: Being a quick learner, how do you approach learning new technologies or frameworks, and can you share an instance where this helped you succeed?",
+    "About Weaknesses: You mentioned time management as a weakness. What steps are you currently taking to improve your time management skills?",
+    "About Weaknesses: Public speaking is listed as a weakness. How do you handle situations where you need to present your ideas or collaborate with a team?"
+  ],
+  "answers": [
+    "I don't have any experience 0 years of experience.",
+    "No, I haven't work on that particular project.",
+    "Don't use equal database.",
+    "I don't have any detail information regarding this integration.",
+    "I have used this application and there is no challenge.",
+    "I don't use that.",
+    "Waking up early in the morning.",
+    "No, I don't have any specific instance, but we can consider to watching movie television Facebook, YouTube.",
+    "Going home early.",
+    "I only listen to ideas."
+  ],
+  "scores": [],
+  "overall": {
+    "decision": "REJECT",
+    "reason": "Average score = 0.0, threshold=6."
+  }
+}

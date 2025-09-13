@@ -1,0 +1,73 @@
+AI Recruitment Agent – Step by Step Workflow
+1. app.py
+
+Entry point (FastAPI server)
+
+Serves API endpoints and connects UI to backend logic.
+
+2. static/dashboard.html
+
+Frontend dashboard (HTML + JavaScript)
+
+Upload JD (PDFs) and candidate resumes (PDFs)
+
+Start shortlisting and interviews
+
+Real-time table shows candidate status.
+
+3. Input Folders
+
+jd/ → stores uploaded Job Descriptions (PDFs)
+
+candidates/ → stores uploaded resumes (PDFs)
+
+4. embedding_store.py + FAISS
+
+Converts JD & resumes into embeddings
+
+Stores them in FAISS vector index
+
+Enables similarity matching between JD and candidate skills.
+
+5. llama_api.py (Ollama LLaMA)
+
+Generates interview questions and evaluates answers
+
+Interacts with LLaMA 3.1 (8B) via your local Ollama setup.
+
+6. interview_orchestrator.py
+
+Controls interview flow:
+
+3 questions from JD
+
+3 from Resume
+
+2 from Strengths
+
+2 from Weaknesses
+
+Tracks candidate responses.
+
+7. Twilio (Real-time STT/TTS)
+
+Streaming STT (streaming_stt.py) → transcribes candidate’s speech
+
+TTS (tts_stream.py) → converts agent’s text into audio
+
+Live two-way voice call with candidate.
+
+8. results/interview_reports/
+
+Saves final results:
+
+JSON report (raw data)
+
+PDF report (formal copy)
+
+HTML report (viewable in browser)
+
+Dashboard provides “View Report” button for each candidate.
+
+✅ Execution Order:
+app.py → dashboard.html → Upload PDFs → jd/ & candidates/ → embedding_store.py → llama_api.py → interview_orchestrator.py → Twilio real-time call → Reports generated in results/.

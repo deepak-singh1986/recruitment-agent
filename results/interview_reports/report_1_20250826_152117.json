@@ -1,0 +1,38 @@
+{
+  "candidate": {
+    "id": 1,
+    "name": null,
+    "phone": "+917709861994"
+  },
+  "job": "sample_jd.pdf",
+  "timestamp": "2025-08-26T09:51:17.670122",
+  "questions": [
+    "From the Job Description: Can you describe your experience working with Python and how you've applied it in backend development projects?",
+    "From the Job Description: Have you worked with FastAPI or Flask before? If yes, can you share a specific project where you used either framework?",
+    "From the Job Description: What is your approach to designing and optimizing PostgreSQL databases for backend systems?",
+    "From the Candidate's Profile: Your resume mentions experience with Django. How does it compare to FastAPI or Flask in your opinion, and how have you leveraged Django in your projects?",
+    "From the Candidate's Profile: You have listed REST APIs as a skill. Can you walk me through a project where you designed or consumed REST APIs?",
+    "From the Candidate's Profile: With your experience in Python and SQL, how do you ensure efficient communication between the backend and the database?",
+    "About Strengths: You mentioned problem-solving as one of your strengths. Can you share an example of a challenging problem you solved in a previous project?",
+    "About Strengths: Being a quick learner is a valuable trait. Can you describe a situation where you had to learn a new technology or skill quickly to meet project requirements?",
+    "About Weaknesses: You mentioned time management as a weakness. What steps are you currently taking to improve your time management skills?",
+    "About Weaknesses: Public speaking is another area you identified as a weakness. How do you handle situations where you need to present your ideas or collaborate with a team?"
+  ],
+  "answers": [
+    "I have at experience in Python development.",
+    "Yes. Yes, I have used in our organization project",
+    "Query normalization database indexing.",
+    "J is easy to use.",
+    "Is in order application we have developed all API in rest.",
+    "Open database connection.",
+    "Yes. Yes, I have so many problems.",
+    "Yes, sir.",
+    "I can learn quickly.",
+    "No, I don't have any weakness."
+  ],
+  "scores": [],
+  "overall": {
+    "decision": "REJECT",
+    "reason": "Average score = 0.0, threshold=6."
+  }
+}

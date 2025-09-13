@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AI Recruitment Dashboard</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+<style>
+body {
+	font-family: 'Roboto', Arial, sans-serif;
+	background: #f4f6fa;
+	margin: 0;
+	padding: 0;
+}
+.header {
+	background: linear-gradient(90deg, #4f8cff 0%, #2355d6 100%);
+	color: #fff;
+	padding: 24px 0 16px 0;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+.header h1 {
+	margin: 0;
+	font-size: 2.2rem;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+.navbar {
+	display: flex;
+	justify-content: center;
+	gap: 32px;
+	background: #2355d6;
+	padding: 10px 0;
+}
+.navbar a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1.1rem;
+	padding: 6px 18px;
+	border-radius: 4px;
+	transition: background 0.2s;
+}
+.navbar a:hover, .navbar a.active {
+	background: #4f8cff;
+}
+.container {
+	max-width: 950px;
+	margin: 40px auto 0 auto;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+	padding: 32px 40px 40px 40px;
+}
+footer {
+	background: #2a3b4c;
+	color: #fff;
+	text-align: center;
+	padding: 18px 0 12px 0;
+	margin-top: 40px;
+	font-size: 1rem;
+	letter-spacing: 1px;
+}
+.section {
+	margin-bottom: 32px;
+}
+.section-title {
+	color: #3b4a5a;
+	font-size: 1.2rem;
+	margin-bottom: 16px;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+.form-row {
+	display: flex;
+	gap: 16px;
+	margin-bottom: 12px;
+}
+input[type="file"] {
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	padding: 6px 8px;
+	background: #f9fafb;
+}
+input[type="text"], input[type="search"], input[type="number"], input[type="email"], input[type="password"], input[type="date"] {
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 1rem;
+	background: #f9fafb;
+}
+button {
+	background: linear-gradient(90deg, #4f8cff 0%, #2355d6 100%);
+	color: #fff;
+	border: none;
+	border-radius: 6px;
+	padding: 8px 20px;
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s, box-shadow 0.2s;
+	box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+}
+button:hover {
+	background: linear-gradient(90deg, #2355d6 0%, #4f8cff 100%);
+}
+table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+}
+th, td {
+	padding: 12px 10px;
+	text-align: left;
+}
+th {
+	background: #f0f4fa;
+	color: #2a3b4c;
+	font-weight: 700;
+	border-bottom: 2px solid #e3e8f0;
+}
+tr:nth-child(even) td {
+	background: #f9fafb;
+}
+tr:hover td {
+	background: #eaf1fb;
+}
+.controls-row {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	margin-bottom: 8px;
+}
+.controls-row input {
+	flex: 1;
+}
+.loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 16px; height: 16px; animation: spin 1s linear infinite; display:inline-block; vertical-align:middle; margin-left:8px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@media (max-width: 700px) {
+	.container { padding: 16px; }
+	.form-row, .controls-row { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+	<h1>AI Recruitment Dashboard</h1>
+</div>
+<div class="navbar">
+	<a href="/dashboard" class="active">Dashboard</a>
+	<a href="/reports">Reports</a>
+	<a href="#" onclick="showModal('Coming soon!')">Analytics</a>
+	<a href="#" onclick="showModal('Coming soon!')">Settings</a>
+</div>
+<div class="container">
+	<div class="section">
+		<div class="section-title">Upload</div>
+		<div class="form-row">
+			<form id="uploadJD" enctype="multipart/form-data" style="flex:1"><input type="file" name="file" accept="application/pdf"><button type="button" onclick="uploadJD()">Upload JD</button></form>
+			<form id="uploadResume" enctype="multipart/form-data" style="flex:2"><input type="file" name="file" accept="application/pdf" multiple><button type="button" onclick="uploadResume()">Upload Resume(s)</button></form>
+		</div>
+	</div>
+	<div class="section">
+		<div class="section-title">Controls</div>
+		<div class="controls-row">
+			<select id="jdname" style="flex:1"><option value="">Select JD file...</option></select>
+			<button onclick="shortlist()">Run Shortlist</button>
+			<button onclick="startCalls()">Start Calls</button>
+		</div>
+	</div>
+	<div class="section">
+		<div class="section-title">Candidates</div>
+		<table id="candidates">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Phone</th>
+					<th>Shortlist</th>
+					<th>Call Status</th>
+					<th>Final Decision</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Filled by JS -->
+			</tbody>
+		</table>
+	</div>
+	<!-- Modal Popup -->
+	<div id="modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(44,62,80,0.18);z-index:1000;align-items:center;justify-content:center;">
+		<div style="background:#fff;padding:32px 24px 24px 24px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.12);max-width:350px;text-align:center;position:relative;">
+			<span id="modal-close" style="position:absolute;top:8px;right:16px;font-size:1.5rem;cursor:pointer;">&times;</span>
+			<div id="modal-msg" style="font-size:1.1rem;color:#2a3b4c;margin-top:12px;"></div>
+		</div>
+	</div>
+</div>
+<footer>
+	&copy; 2025 AI Recruitment Platform &mdash; Powered by GenAI
+</footer>
+<script>
+async function uploadJD() {
+	const f = document.querySelector('#uploadJD input').files[0];
+	if (!f) {
+		alert("Please select a file to upload.");
+		return;
+	}
+	const fd = new FormData();
+	fd.append('file', f);
+	const r = await fetch('/upload/jd', { method: 'POST', body: fd });
+	let resp;
+	try {
+		resp = await r.json();
+	} catch (e) {
+		alert("Upload failed: Invalid server response.");
+		return;
+	}
+	if (resp.status === 'ok') {
+		alert("Upload successful!");
+	} else {
+		alert("Upload failed: " + (resp.message || "Unknown error"));
+	}
+}
+async function uploadResume() {
+	const files = document.querySelector('#uploadResume input').files;
+	if (!files.length) {
+		alert("Please select at least one resume to upload.");
+		return;
+	}
+	let allOk = true;
+	for (let i = 0; i < files.length; i++) {
+		const form = new FormData();
+		form.append('file', files[i]);
+		const r = await fetch('/upload/resume', { method: 'POST', body: form });
+		let resp;
+		try {
+			resp = await r.json();
+		} catch (e) {
+			alert(`Upload failed for ${files[i].name}: Invalid server response.`);
+			allOk = false;
+			continue;
+		}
+		if (resp.status !== 'ok') {
+			alert(`Upload failed for ${files[i].name}: ` + (resp.message || "Unknown error"));
+			allOk = false;
+		}
+	}
+	if (allOk) {
+		alert('All resumes uploaded successfully!');
+	}
+	loadCandidates();
+}
+function showModal(msg) {
+	document.getElementById('modal-msg').innerText = msg;
+	document.getElementById('modal').style.display = 'flex';
+}
+document.getElementById('modal-close').onclick = function() {
+	document.getElementById('modal').style.display = 'none';
+};
+
+async function shortlist() {
+	const btn = Array.from(document.querySelectorAll('button')).find(b => b.textContent.includes('Run Shortlist'));
+	if (btn) {
+		btn.disabled = true;
+		const orig = btn.innerHTML;
+		btn.innerHTML = 'Running... <span class="loader"></span>';
+	}
+	const jdSel = document.getElementById('jdname');
+	const jd = jdSel.value;
+	const jd_name = jdSel.options[jdSel.selectedIndex]?.text || jd;
+	if (!jd) {
+		showModal('Please select a JD file.');
+		if (btn) { btn.disabled = false; btn.innerHTML = 'Run Shortlist'; }
+		return;
+	}
+	const fd = new FormData();
+	fd.append('jd_filename', jd);
+	const r = await fetch('/shortlist/llm', { method: 'POST', body: fd });
+	const j = await r.json();
+	if (j.status === 'ok' && j.results && j.results.length > 0) {
+		const selected = j.results.filter(x => x.shortlist === 'SELECT');
+		showModal('LLM Shortlisting complete!\nSelected: ' + selected.length + ' out of ' + j.results.length);
+	} else {
+		showModal('Sorry! LLM was unable to shortlist any profiles for JD ' + jd_name + '.');
+	}
+	if (btn) { btn.disabled = false; btn.innerHTML = 'Run Shortlist'; }
+	loadCandidates();
+}
+async function startCalls() {
+	// Get candidate data from table
+	const tb = document.querySelector('#candidates tbody');
+	const rows = Array.from(tb.querySelectorAll('tr'));
+	let hasSelect = false;
+	rows.forEach(row => {
+		const shortlistCell = row.querySelector('.shortlist-cell');
+		if (shortlistCell && shortlistCell.textContent.trim().toUpperCase() === 'SELECT') {
+			hasSelect = true;
+		}
+	});
+	if (!hasSelect) {
+		showModal('None of profiles are shortlisted to start with calling');
+		return;
+	}
+	await fetch('/start-calls', { method: 'POST' });
+	showModal('Call started');
+}
+async function loadCandidates(){
+	const r=await fetch('/api/candidates');
+	const arr=await r.json();
+	const tb=document.querySelector('#candidates tbody');
+	tb.innerHTML='';
+	arr.forEach(c=>{
+		tb.innerHTML+=`<tr>
+		<td>${c.id}</td>
+		<td>${c.name||''}</td>
+		<td>${c.phone||''}</td>
+		<td><span class="shortlist-cell" data-id="${c.id}" style="cursor:pointer;text-decoration:underline;">${c.shortlist||''}</span></td>
+		<td>${c.call_status||''}</td>
+		<td>${c.final_decision||''}</td>
+		</tr>`
+	});
+	// Add click event for shortlist reason modal
+	document.querySelectorAll('.shortlist-cell').forEach(el=>{
+		el.onclick=async function(){
+			const id=this.getAttribute('data-id');
+			const resp=await fetch('/shortlist/reason/'+id);
+			const data=await resp.json();
+			showModal(data.reason||'No reason available.');
+		};
+	});
+}
+// Populate JD dropdown
+async function loadJDList() {
+	const sel = document.getElementById('jdname');
+	sel.innerHTML = '<option value="">Select JD file...</option>';
+	try {
+		const r = await fetch('/api/jd_files');
+		const j = await r.json();
+		(j.files || []).forEach(f => {
+			sel.innerHTML += `<option value="${f}">${f}</option>`;
+		});
+	} catch (e) {
+		sel.innerHTML = '<option value="">(Failed to load JD files)</option>';
+	}
+}
+loadJDList();
+loadCandidates();
+const ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws');
+ws.onmessage=msg=>{ console.log('ws',msg.data); loadCandidates(); }
+</script>
+</body></html>
